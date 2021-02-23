@@ -28,4 +28,12 @@ public class CardDeckTest {
         List<Card> cards = cardDeck.handoutTwoCards();
         assertThat(cards.size()).isEqualTo(2);
     }
+
+    @Test
+    @DisplayName("1장의 카드를 정상적으로 리턴하는 지 테스트")
+    public void handoutOneCard() {
+        CardDeck cardDeck = new CardDeck();
+        List<Card> cards = cardDeck.handoutOneCard();
+        assertThat(cards.size()).isEqualTo(1);
+    }
 }

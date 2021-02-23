@@ -11,6 +11,7 @@ public class CardDeck {
 
     private static final int GAP_WITH_INDEX_AND_SIZE = 1;
     private static final int TWO_CARDS_SIZE = 2;
+    private static final int ONE_CARD_SIZE = 1;
     public static List<Card> cardDeck = new ArrayList<>(createShuffledCardDeck());
 
     public CardDeck() {
@@ -32,8 +33,16 @@ public class CardDeck {
     }
 
     public List<Card> handoutTwoCards() {
+        return handoutCards(TWO_CARDS_SIZE);
+    }
+
+    public List<Card> handoutOneCard() {
+        return handoutCards(ONE_CARD_SIZE);
+    }
+
+    private List<Card> handoutCards(int cardsSize) {
         List<Card> cards = new ArrayList<>();
-        for (int i = 0; i < TWO_CARDS_SIZE; i++) {
+        for (int i = 0; i < cardsSize; i++) {
             int lastIndex = cardDeck.size() - GAP_WITH_INDEX_AND_SIZE;
             cards.add(cardDeck.remove(lastIndex));
         }
