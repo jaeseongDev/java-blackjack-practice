@@ -1,10 +1,11 @@
-package blackjack.domain;
+package blackjack.domain.participant;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import blackjack.domain.card.Card;
 import blackjack.domain.card.CardDeck;
+import blackjack.domain.participant.Participant;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,13 +25,18 @@ public class ParticipantTest {
     @Test
     @DisplayName("게임 시작 시 카드를 2장 받는 기능이 제대로 작동하는 지 테스트")
     public void receiveCards() {
-        Participant participant = new Participant("jason");
+        Participant player = new Player("jason");
+        Participant dealer = new Dealer();
+
         CardDeck cardDeck = new CardDeck();
         List<Card> cards = cardDeck.handoutTwoCards();
-        participant.receive(cards);
+        player.receive(cards);
+        dealer.receive(cards);
 
         for (int i = 0; i < cards.size(); i++) {
-            assertThat(cards.get(i)).isEqualTo(participant.getCards().get(i));
+            Card card = cards.get(i);
+            assertThat(player.getCards().get(i)).isEqualTo(card);
+            assertThat(dealer.getCards().get(i)).isEqualTo(card);
         }
     }
 }
