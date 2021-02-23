@@ -5,6 +5,7 @@ import blackjack.domain.participant.Dealer;
 import blackjack.domain.participant.Participant;
 import blackjack.domain.participant.Player;
 import blackjack.view.InputView;
+import blackjack.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,6 +20,7 @@ public class GameController {
                                            .collect(Collectors.toList());
         List<Participant> participants = createParticipant(players, dealer);
         initCardHandout(participants, cardDeck);
+        OutputView.printInitHandOutCards(dealer, players);
     }
 
     private List<Participant> createParticipant(List<Player> players, Dealer dealer) {

@@ -30,4 +30,8 @@ public class Participant {
     public List<Card> getCards() {
         return Collections.unmodifiableList(cards);
     }
+
+    public String getName() {
+        return name;
+    }
 }
