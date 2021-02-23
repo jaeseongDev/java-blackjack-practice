@@ -17,9 +17,14 @@ public class InputView {
         System.out.println("게임에 참여할 사람의 이름을 입력하세요.(쉼표 기준으로 분리)");
         String input = scanner.nextLine();
         String[] names = input.split(DELIMITER);
+        printEmptyLine();
         return Arrays.asList(names)
                      .stream()
                      .map(name -> name.trim())
                      .collect(Collectors.toList());
+    }
+
+    public static void printEmptyLine() {
+        System.out.println();
     }
 }
