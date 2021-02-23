@@ -5,7 +5,6 @@ import java.util.List;
 
 public class GameController {
     public void run() {
-        List<String> ParticipantsNames = InputView.inputParticipantsNames();
-
+        List<String> participantsNames = InputView.inputParticipantsNames();
     }
 }
