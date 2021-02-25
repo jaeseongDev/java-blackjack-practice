@@ -21,6 +21,8 @@ public class GameController {
         List<Participant> participants = createParticipant(players, dealer);
         initCardHandout(participants, cardDeck);
         OutputView.printInitHandOutCards(dealer, players);
+        OutputView.printDealerCards(dealer);
+        OutputView.printPlayersCards(players);
     }
 
     private List<Participant> createParticipant(List<Player> players, Dealer dealer) {

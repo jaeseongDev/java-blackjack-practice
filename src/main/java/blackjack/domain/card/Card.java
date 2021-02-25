@@ -11,6 +11,14 @@ public class Card {
         this.symbol = symbol;
     }
 
+    public Shape getShape() {
+        return shape;
+    }
+
+    public Symbol getSymbol() {
+        return symbol;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
