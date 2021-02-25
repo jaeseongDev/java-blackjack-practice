@@ -15,6 +15,7 @@ public class GameController {
     private static final String AGREE = "y";
     private static final int MAX_CARDS_SUM = 21;
     private static final String DECLINE = "n";
+    private static final int MAX_CARDS_SUM_TO_RECEIVE_FOR_DEALER = 16;
 
     public void run() {
         CardDeck cardDeck = new CardDeck();
@@ -39,6 +40,10 @@ public class GameController {
                 }
             }
             OutputView.printPlayerCards(player);
+        }
+        if (dealer.getCardsSum() <= MAX_CARDS_SUM_TO_RECEIVE_FOR_DEALER) {
+            dealer.receive(cardDeck.handoutOneCard());
+            OutputView.printDealerReceiveAdditionalCard();
         }
     }
 

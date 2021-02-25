@@ -43,4 +43,14 @@ public class OutputView {
                           .map(card -> card.getSymbol().getName() + card.getShape().getName())
                           .collect(joining(DELIMITER));
     }
+
+    public static void printDealerReceiveAdditionalCard() {
+        printEmptyLine();
+        System.out.println("딜러는 16이하라 한장의 카드를 더 받았습니다.");
+        printEmptyLine();
+    }
+
+    private static void printEmptyLine() {
+        System.out.println();
+    }
 }
