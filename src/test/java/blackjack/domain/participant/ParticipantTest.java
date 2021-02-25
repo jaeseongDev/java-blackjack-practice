@@ -39,4 +39,18 @@ public class ParticipantTest {
             assertThat(dealer.getCards().get(i)).isEqualTo(card);
         }
     }
+
+    @Test
+    @DisplayName("카드 합계를 구하는 기능 테스트")
+    public void getCardsSum() {
+        Participant participant = new Participant("jason");
+        CardDeck cardDeck = new CardDeck();
+        List<Card> cards = cardDeck.handoutTwoCards();
+        participant.receive(cards);
+        int cardsSum = cards.stream()
+             .mapToInt(card -> card.getValue())
+             .sum();
+
+        assertThat(participant.getCardsSum()).isEqualTo(cardsSum);
+    }
 }

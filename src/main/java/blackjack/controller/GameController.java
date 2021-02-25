@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 public class GameController {
 
     private static final String AGREE = "y";
+    private static final int MAX_CARDS_SUM = 21;
+    private static final String DECLINE = "n";
 
     public void run() {
         CardDeck cardDeck = new CardDeck();
@@ -27,13 +29,15 @@ public class GameController {
         OutputView.printDealerCards(dealer);
         OutputView.printPlayersCards(players);
         for (Player player : players) {
-            String answer;
-            do {
-                answer = InputView.inputIfReceiveCard(player);
+            while (true) {
+                String answer = InputView.inputIfReceiveCard(player);
                 if (answer.equals(AGREE)) {
                     player.receive(cardDeck.handoutOneCard());
                 }
-            } while (answer.equals(AGREE));
+                if (player.getCardsSum() > MAX_CARDS_SUM || answer.equals(DECLINE)) {
+                    break;
+                }
+            }
             OutputView.printPlayerCards(player);
         }
     }

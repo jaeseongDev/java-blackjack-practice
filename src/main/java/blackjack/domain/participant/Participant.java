@@ -34,4 +34,10 @@ public class Participant {
     public String getName() {
         return name;
     }
+
+    public int getCardsSum() {
+        return cards.stream()
+                     .mapToInt(card -> card.getValue())
+                     .sum();
+    }
 }
