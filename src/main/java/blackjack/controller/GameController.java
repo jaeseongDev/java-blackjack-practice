@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GameController {
+
+    private static final String AGREE = "y";
+
     public void run() {
         CardDeck cardDeck = new CardDeck();
         Dealer dealer = new Dealer();
@@ -18,14 +21,24 @@ public class GameController {
         List<Player> players = playersNames.stream()
                                            .map(Player::new)
                                            .collect(Collectors.toList());
-        List<Participant> participants = createParticipant(players, dealer);
+        List<Participant> participants = createParticipants(players, dealer);
         initCardHandout(participants, cardDeck);
         OutputView.printInitHandOutCards(dealer, players);
         OutputView.printDealerCards(dealer);
         OutputView.printPlayersCards(players);
+        for (Player player : players) {
+            String answer;
+            do {
+                answer = InputView.inputIfReceiveCard(player);
+                if (answer.equals(AGREE)) {
+                    player.receive(cardDeck.handoutOneCard());
+                }
+            } while (answer.equals(AGREE));
+            OutputView.printPlayerCards(player);
+        }
     }
 
-    private List<Participant> createParticipant(List<Player> players, Dealer dealer) {
+    private List<Participant> createParticipants(List<Player> players, Dealer dealer) {
         List<Participant> participants = new ArrayList<>();
         participants.add(dealer);
         participants.addAll(players);

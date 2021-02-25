@@ -28,10 +28,13 @@ public class OutputView {
 
     public static void printPlayersCards(List<Player> players) {
         for (Player player : players) {
-            String cards = parseToCards(player);
-            System.out.println(player.getName() + "카드: " + cards);
+            printPlayerCards(player);
         }
+    }
 
+    public static void printPlayerCards(Player player) {
+        String cards = parseToCards(player);
+        System.out.println(player.getName() + "카드: " + cards);
     }
 
     private static String parseToCards(Participant participant) {
