@@ -45,6 +45,8 @@ public class GameController {
             dealer.receive(cardDeck.handoutOneCard());
             OutputView.printDealerReceiveAdditionalCard();
         }
+        OutputView.printFinalCards(dealer, players);
+        OutputView.printResult(dealer, players);
     }
 
     private List<Participant> createParticipants(List<Player> players, Dealer dealer) {
